@@ -2,8 +2,6 @@ import { useMemo, useState } from "react";
 import clsx from "clsx";
 import type { DataTableProps, SortOrder } from "./types";
 
-
-
 export function DataTable<T extends { id: string | number }>({
   data,
   columns,
@@ -45,8 +43,15 @@ export function DataTable<T extends { id: string | number }>({
 
   const toggleRow = (id: string | number) => {
     const next = new Set(selectedIds);
-    next.has(id) ? next.delete(id) : next.add(id);
+
+    if (next.has(id)) {
+      next.delete(id);
+    } else {
+      next.add(id);
+    }
+
     setSelectedIds(next);
+
     if (onRowSelect) {
       const selectedRows = data.filter((r) => next.has(r.id));
       onRowSelect(selectedRows);
@@ -77,7 +82,9 @@ export function DataTable<T extends { id: string | number }>({
               <th className="p-3 border-b border-gray-200 dark:border-gray-700 w-10">
                 <input
                   type="checkbox"
-                  aria-label={allSelected ? "Deselect all rows" : "Select all rows"}
+                  aria-label={
+                    allSelected ? "Deselect all rows" : "Select all rows"
+                  }
                   checked={allSelected}
                   onChange={toggleAll}
                 />
@@ -85,7 +92,11 @@ export function DataTable<T extends { id: string | number }>({
             )}
             {columns.map((c) => {
               const isSorted = sortKey === c.key;
-              const ariaSort = isSorted ? (sortOrder === "asc" ? "ascending" : "descending") : "none";
+              const ariaSort = isSorted
+                ? sortOrder === "asc"
+                  ? "ascending"
+                  : "descending"
+                : "none";
               return (
                 <th
                   key={c.key}
@@ -95,7 +106,7 @@ export function DataTable<T extends { id: string | number }>({
                     c.sortable && "cursor-pointer"
                   )}
                   onClick={() => c.sortable && toggleSort(c.key)}
-                  aria-sort={ariaSort as any}
+                  aria-sort={ariaSort}
                 >
                   <span className="inline-flex items-center gap-1">
                     {c.title}

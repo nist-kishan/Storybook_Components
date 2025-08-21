@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { DataTable } from "./DataTable";
-import type{ User , Column} from "./types";
+import type { User, Column } from "./types";
 
 const data: User[] = [
   { id: 1, name: "Aisha", email: "aisha@example.com", age: 24 },

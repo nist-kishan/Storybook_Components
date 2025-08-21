@@ -21,7 +21,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6 space-y-6">
       <button
-        className="rounded-lg border px-3 py-1"
+        className="rounded-lg border px-3 py-1 cursor-pointer"
         onClick={() => document.documentElement.classList.toggle("dark")}
       >
         Toggle Theme

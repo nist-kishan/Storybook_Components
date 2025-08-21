@@ -16,7 +16,7 @@ export interface Column<T> {
   title: string;
   dataIndex: keyof T;
   sortable?: boolean;
-  render?: (value: any, record: T) => React.ReactNode;
+  render?: <K extends keyof T>(value: T[K], record: T) => React.ReactNode;
 }
 
 export interface DataTableProps<T> {
