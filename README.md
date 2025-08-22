@@ -100,3 +100,21 @@ describe("App component", () => {
 After building, deploy the dist/ folder to any static hosting provider:
 
 Netlify
+
+## 8. Storybook Hosting
+
+The Storybook for this project is deployed on Netlify.
+
+Live Storybook URL: 
+
+```
+https://storybookpreview.netlify.app/
+```
+
+Deployment Procedure
+
+Netlify runs:
+```
+npm run build-storybook
+
+```
